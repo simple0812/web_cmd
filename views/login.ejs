@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/lib/jquery.js"></script>
+    <script type="text/javascript" src="/js/lib/common.js"></script>
+    <style type="text/css">
+        body {height: 100%; background-color: rgb(66, 139, 202);}
+        #createUserModal {margin-top:80px;}
+    </style>
+
+</head>
+<body >
+<div class="wrap" >
+    <script>
+        window.onkeydown = function(e) {
+            var e = e || window.event;
+            if(e.keyCode == 13) sendCmd($('#searchBtn'));
+        }
+
+        function sendCmd(obj) {
+            var cmd = encodeURIComponent($('#txt').val());
+
+            $.getJSON('/cmd', {act : cmd}, function(json) {
+                $('#txt').val('')
+                //console.log(json);
+                $('#info').append( '<p>' + (json.result || json.message) +'</p>');
+
+                info.scrollTop = info.scrollHeight + 100
+            })
+        }
+
+        function cls() {
+            $('#info').html('');
+        }
+    </script>
+
+    <div class="container fixed-width center-block"  >
+        <button class="btn btn-default" onclick="cls()">清空</button>
+       <div class="col-xs-3 input-group ">
+            <input type="text" class="form-control" id="txt" />
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default" id="searchBtn" onclick="sendCmd(this)">发送</button>
+            </span>
+        </div>
+        <div class='form-control' id='info' style="height:500px; margin-top:25px; overflow-y:auto"></div>
+    </div>
+
+</div>
+</body>
+
+
+
+
+
