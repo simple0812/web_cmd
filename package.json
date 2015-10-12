@@ -1,14 +1,33 @@
 {
-  "name": "rest_test",
+  "name": "web_cmd",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "node --harmony app.js",
+  "main": "app.js",
   "dependencies": {
-    "frisby": "^0.8.5"
+    "co-views": "^2.1.0",
+    "koa-generic-session": "^1.9.2",
+    "koa": "^1.1.0",
+    "bluebird": "^2.10.2",
+    "koa-router": "^5.2.3",
+    "request": "^2.65.0",
+    "koa-bodyparser": "^2.0.1",
+    "koa-static": "^1.4.9",
+    "underscore": "^1.8.3",
+    "log4js": "^0.6.27",
+    "co": "^4.6.0"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simple0812/web_cmd.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simple0812/web_cmd/issues"
+  },
+  "homepage": "https://github.com/simple0812/web_cmd#readme"
 }
