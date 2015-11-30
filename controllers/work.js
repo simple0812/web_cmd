@@ -18,22 +18,22 @@ exports.handle = function*(next) {
 	if (act.trim().length === 0)
 		return this.body = jsonHelper.getError("act不能为空");
 
-  yield co(function *() {
-    return yield execCmd(act)
-  }).then((docs) => {
-    _this.body = jsonHelper.getSuccess(docs);
-  }).catch(err => {
-    logger.normal.error(err);
-    _this.body = jsonHelper.getError(err);
-  })
+	yield co(function*() {
+		return yield execCmd(act)
+	}).then((docs) => {
+		_this.body = jsonHelper.getSuccess(docs);
+	}).catch(err => {
+		logger.normal.error(err);
+		_this.body = jsonHelper.getError(err);
+	})
 
 };
 
 function execCmd(act) {
 	return new Promise(function(resolve, reject) {
-			require('child_process').exec( decodeURIComponent(act), (err, out) => {
-				if (err) return reject(err.message)
-				resolve(out);
-			})
+		require('child_process').exec(decodeURIComponent(act), (err, out) => {
+			if (err) return reject(err.message)
+			resolve(out);
+		})
 	})
 }
